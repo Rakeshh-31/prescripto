@@ -1,5 +1,6 @@
 import validator from 'validator'
-import bcrypt from "bcryptjs";
+import bcrypt from 'bcrypt';
+// const bcrypt = require('bcrypt');
 
 import usermodel from '../models/usermodel.js'
 import jwt from  'jsonwebtoken'
@@ -10,9 +11,11 @@ import razorpay from 'razorpay'
 //API to register user
 
 let registeruser=async(req,res)=>{
+    console.log(req.body)
     try {
         let {name,email,password}=req.body
-
+        console.log(req.body)
+         
         if(!name||!email||!password){
             return res.json({success:false,message:"Missing Details"})
         }
@@ -21,13 +24,13 @@ let registeruser=async(req,res)=>{
             return res.json({success:false,message:"Enter a valid email"})
         }
         //Validating strong password
-        if(password.lenght<8){
+        if(password.length<8){
             return res.json({success:false,message:"Enter a strong password"})
         }
         
         //Hashing user password
-        let salt=await bycrypt.genSalt(10)
-        let hashedpassword=await bycrypt.hash(password,salt)
+        let salt=await bcrypt.genSalt(10)
+        let hashedpassword=await bcrypt.hash(password,salt)
 
         let userdata={
             name,
@@ -39,12 +42,13 @@ let registeruser=async(req,res)=>{
         let user=await  newuser.save()
 
         let token=jwt.sign({id:user._id},process.env.JWT_SECRET)
-        
+       
         res.json({success:true,token})
+        
 
 
     } catch (error) {
-        console.log(error)
+        console.log("HAIII")
         res.json({success:false,message:error.message})
     }
 }
@@ -61,7 +65,8 @@ let loginuser=async(req,res)=>{
         if(!user){
            return  res.json({success:false,message:"User Does not exsist"})
         }
-        let ismatch=await bycrypt.compare(password,user.password)
+        let ismatch=await bcrypt.compare(password,user.password)
+        console.log(ismatch)
         if(ismatch)
         {
             let token=jwt.sign({id:user._id},process.env.JWT_SECRET)
