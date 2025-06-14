@@ -15,7 +15,6 @@ const Myprofile = () => {
 
     try {
       let formdata=new FormData()
-
       formdata.append('name',userdata.name)
       formdata.append('phone',userdata.phone)
       formdata.append('address',JSON.stringify(userdata.address))
@@ -134,5 +133,4 @@ const Myprofile = () => {
     </div>
   )
 }
-
 export default Myprofile

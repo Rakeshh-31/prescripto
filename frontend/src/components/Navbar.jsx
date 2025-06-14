@@ -6,9 +6,11 @@ const Navbar = () => {
   let navigate=useNavigate();
   let {token,settoken,userdata}=useContext(Appcontext)
   let [showmenu,setshowmenu]=useState(false)
-  let logout=()=>{
+  function logout(){
     settoken('false')
     localStorage.removeItem('token')
+    navigate('/')
+    window.location.reload();
   }
   return (
     <div className='flex item-center justify-between text-sm py-4 mb-5 border-b border-b-gray-400'>
@@ -41,7 +43,7 @@ const Navbar = () => {
                 <div className='min-w-48 bg-stone-100 rounded flex flex-col gap-4 p-4'>
                   <p onClick={()=>navigate('my-profile')}className='hover:text-black cursor-pointer'>My Profile</p>
                   <p onClick={()=>navigate('my-appointments')}className='hover:text-black cursor-pointer'>My Appointments</p>
-                  <p onClick={()=>{logout}}className='hover:text-black cursor-pointer'>Log out</p>
+                  <p onClick={logout}className='hover:text-black cursor-pointer'>Log out</p>
                 </div>
             </div>
           </div>

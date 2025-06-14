@@ -20,11 +20,14 @@ import { useNavigate } from 'react-router-dom'
       try {
         if(state==='Sign Up'){
           let {data}=await axios.post(backendurl+'/api/user/register',{name,password,email})
+          console.log(data)
+          console.log(data.success)
           if(data.success){
             localStorage.setItem('token',data.token)
             settoken(data.token)
           }
           else{
+            console.log("Lamja")
             toast.error(data.message)
           }
         }
@@ -40,6 +43,7 @@ import { useNavigate } from 'react-router-dom'
         }
       }
        catch (error) {
+        console.log(error)
         toast.error(error.message)
       }
 
