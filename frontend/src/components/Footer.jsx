@@ -8,7 +8,7 @@ const Footer = () => {
         {/* left */}
         <div>
         <img className='mb-5 w-40'src={assets.logo} alt="" />
-        <p className='w-full md:w-2/3 text-gray-600 leading-6'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis non dicta fugiat quas rerum, explicabo maxime aut vel quia quaerat debitis deserunt distinctio eaque et dolore? Distinctio quis hic quisquam.</p>
+        <p className='w-full md:w-2/3 text-gray-600 leading-6'>Trusted Care, Proven Excellence: With a 98% treatment success rate, our hospital stands as a leader in compassionate, advanced healthcare — delivering prestige and trust to every patient.</p>
         </div>
         {/* center */}
         <div>
@@ -24,8 +24,7 @@ const Footer = () => {
         <div>
             <p className='text-xl font-medium mb-5'>GET IN TOUCH</p>
             <ul className='flex flex-col gap-2 text-gray-600'>
-                <li>+91-630558854
-                    2
+                <li>+91-6305588542
                 </li>
                 <li>rakeshduppelli11@gmail.com</li>
             </ul>
@@ -34,8 +33,7 @@ const Footer = () => {
       </div>
       {/* copyrighttext */}
       <div>
-        <hr/>
-        <p className='py-5 text-sm text-center'>Copyright 2024 @ Greatstack.dev - All Right Reserved.</p>
+       
       </div>
     </div>
   )
